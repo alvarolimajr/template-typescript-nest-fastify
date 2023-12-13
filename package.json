@@ -51,7 +51,7 @@
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@compodoc/compodoc": "^1.1.23",
-    "@nestjs/cli": "^10.1.18",
+    "@nestjs/cli": "^10.2.1",
     "@nestjs/schematics": "^10.0.2",
     "@nestjs/testing": "^10.2.10",
     "@types/cli-color": "^2.0.6",
