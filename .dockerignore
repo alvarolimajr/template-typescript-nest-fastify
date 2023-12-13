@@ -1,0 +1,20 @@
+# Versioning and metadata
+.git
+.gitignore
+.dockerignore
+
+# Build dependencies
+dist
+node_modules
+coverage
+documentation
+
+# Environment (contains sensitive data)
+.env
+
+# Files not required for production
+.editorconfig
+docker-compose*.yml
+Dockerfile*
+*.md
+/.scannerwork
