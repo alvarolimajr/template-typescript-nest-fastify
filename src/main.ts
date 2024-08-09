@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 
-require('newrelic');
+import 'newrelic';
 
 import compression from '@fastify/compress';
 import helmet from '@fastify/helmet';
