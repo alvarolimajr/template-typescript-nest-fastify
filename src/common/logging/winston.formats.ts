@@ -62,7 +62,7 @@ function isObject(value?: any): value is object {
 /**
  * Add severity.
  */
-export const severity = format((info, opts) => {
+export const severity = format((info, opts: { upperCase: boolean }) => {
   const { level } = info;
   const levels = info.levels || NPM_LEVEL_NAME_TO_CODE;
   const levelCode = levels[level];
@@ -83,14 +83,14 @@ export const nestConsoleFormat = (appName = 'NestWinston') =>
     const levelMessage = color(`[${appName}] ${level.toUpperCase()}   - `);
 
     const timestampMessage = timestamp
-      ? new Date(timestamp).toLocaleString()
+      ? new Date(timestamp as string).toLocaleString()
       : new Date().toLocaleString();
 
     const contextMessage = context ? clc.yellow(`[${context}] `) : '';
 
     const outputMessage = isObject(message)
       ? color(JSON.stringify(message))
-      : color(message);
+      : color(message as string);
 
     const timestampDiff = clc.yellow(ms);
 
