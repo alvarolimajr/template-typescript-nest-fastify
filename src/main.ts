@@ -7,6 +7,7 @@ import helmet from '@fastify/helmet';
 import { fastifyRequestContext } from '@fastify/request-context';
 import {
   ClassSerializerInterceptor,
+  ConsoleLogger,
   INestApplication,
   Logger,
   LogLevel,
@@ -28,6 +29,7 @@ import {
   WinstonLogger,
 } from './common';
 import {
+  IS_PRODUCTION,
   PROJECT_DESCRIPTION,
   PROJECT_NAME,
   PROJECT_VERSION,
@@ -93,9 +95,13 @@ async function bootstrap() {
     AppModule,
     fastifyAdapter,
     {
-      logger: [
-        (process.env.LOG_LEVEL || DEFAULT_BOOTSTRAP_LOG_LEVEL) as LogLevel,
-      ],
+      logger: new ConsoleLogger({
+        colors: !IS_PRODUCTION,
+        json: IS_PRODUCTION,
+        logLevels: [
+          (process.env.LOG_LEVEL || DEFAULT_BOOTSTRAP_LOG_LEVEL) as LogLevel,
+        ],
+      }),
       abortOnError: false,
     },
   );
