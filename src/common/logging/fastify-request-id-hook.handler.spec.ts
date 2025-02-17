@@ -26,11 +26,8 @@ const mockRequestHeader: FastifyRequest = {
   url: undefined,
   protocol: undefined,
   method: undefined,
-  routerPath: undefined,
-  routerMethod: undefined,
   is404: undefined,
   socket: undefined,
-  connection: undefined,
   requestContext: {
     get: jest.fn(),
     set: jest.fn(),
@@ -38,14 +35,13 @@ const mockRequestHeader: FastifyRequest = {
   headers: {
     [REQUEST_ID_HEADER_KEY]: 'requestId',
   },
-  context: undefined,
   getValidationFunction: jest.fn(),
   compileValidationSchema: jest.fn(),
   validateInput: jest.fn(),
-  routeConfig: undefined,
-  routeSchema: undefined,
   routeOptions: undefined,
-  originalUrl: '',
+  originalUrl: 'localhost',
+  host: 'localhost',
+  port: 4000,
 };
 
 const mockDone = jest.fn();
