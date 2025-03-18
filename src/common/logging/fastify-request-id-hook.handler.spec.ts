@@ -1,4 +1,4 @@
-import { requestContext } from '@fastify/request-context';
+import { requestContext, RequestContextData } from '@fastify/request-context';
 import { FastifyRequest } from 'fastify';
 import {
   fastifyRequestIdHookHandler,
@@ -31,6 +31,9 @@ const mockRequestHeader: FastifyRequest = {
   requestContext: {
     get: jest.fn(),
     set: jest.fn(),
+    getStore: function (): RequestContextData | undefined {
+      throw new Error('Function not implemented.');
+    },
   },
   headers: {
     [REQUEST_ID_HEADER_KEY]: 'requestId',
