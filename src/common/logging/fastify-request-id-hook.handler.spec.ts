@@ -45,6 +45,8 @@ const mockRequestHeader: FastifyRequest = {
   originalUrl: 'localhost',
   host: 'localhost',
   port: 4000,
+  getDecorator: jest.fn(),
+  setDecorator: jest.fn(),
 };
 
 const mockDone = jest.fn();
