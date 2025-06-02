@@ -35,7 +35,7 @@
     "@nestjs/common": "^11.0.20",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.20",
-    "@nestjs/platform-fastify": "^11.0.20",
+    "@nestjs/platform-fastify": "^11.1.2",
     "@nestjs/swagger": "^11.1.5",
     "@nestjs/terminus": "^11.0.0",
     "@newrelic/winston-enricher": "^4.0.1",
