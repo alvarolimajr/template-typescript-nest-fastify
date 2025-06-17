@@ -67,14 +67,14 @@ describe('System header validation service', () => {
 
     it('Http exception', () => {
       filter.catch(new NotFoundException('User not found'), mockArgumentsHost);
-      expect(mockHttpArgumentsHost).toBeCalledTimes(1);
-      expect(mockHttpArgumentsHost).toBeCalledWith();
-      expect(mockGetResponse).toBeCalledTimes(1);
-      expect(mockGetResponse).toBeCalledWith();
-      expect(mockStatus).toBeCalledTimes(1);
-      expect(mockStatus).toBeCalledWith(HttpStatus.NOT_FOUND);
-      expect(mockJson).toBeCalledTimes(1);
-      expect(mockJson).toBeCalledWith({
+      expect(mockHttpArgumentsHost).toHaveBeenCalledTimes(1);
+      expect(mockHttpArgumentsHost).toHaveBeenCalledWith();
+      expect(mockGetResponse).toHaveBeenCalledTimes(1);
+      expect(mockGetResponse).toHaveBeenCalledWith();
+      expect(mockStatus).toHaveBeenCalledTimes(1);
+      expect(mockStatus).toHaveBeenCalledWith(HttpStatus.NOT_FOUND);
+      expect(mockJson).toHaveBeenCalledTimes(1);
+      expect(mockJson).toHaveBeenCalledWith({
         message: 'User not found',
         statusCode: 404,
         timestamp: expect.anything(),
@@ -91,8 +91,8 @@ describe('System header validation service', () => {
         }),
         mockArgumentsHost,
       );
-      expect(mockStatus).toBeCalledWith(HttpStatus.BAD_REQUEST);
-      expect(mockJson).toBeCalledWith({
+      expect(mockStatus).toHaveBeenCalledWith(HttpStatus.BAD_REQUEST);
+      expect(mockJson).toHaveBeenCalledWith({
         message: 'password should not be empty',
         statusCode: 400,
         timestamp: expect.anything(),
@@ -104,8 +104,8 @@ describe('System header validation service', () => {
         new ConflictException('status in conflict'),
         mockArgumentsHost,
       );
-      expect(mockStatus).toBeCalledWith(HttpStatus.CONFLICT);
-      expect(mockJson).toBeCalledWith({
+      expect(mockStatus).toHaveBeenCalledWith(HttpStatus.CONFLICT);
+      expect(mockJson).toHaveBeenCalledWith({
         message: 'status in conflict',
         statusCode: 409,
         timestamp: expect.anything(),
@@ -114,8 +114,8 @@ describe('System header validation service', () => {
 
     it('internal server error', () => {
       filter.catch(new Error('Internal Server Error'), mockArgumentsHost);
-      expect(mockStatus).toBeCalledWith(HttpStatus.INTERNAL_SERVER_ERROR);
-      expect(mockJson).toBeCalledWith({
+      expect(mockStatus).toHaveBeenCalledWith(HttpStatus.INTERNAL_SERVER_ERROR);
+      expect(mockJson).toHaveBeenCalledWith({
         message: 'An internal server error occurred, please contact support.',
         statusCode: 500,
         timestamp: expect.anything(),
@@ -126,8 +126,8 @@ describe('System header validation service', () => {
       const error = { type: 'entity.too.large', length: 2048, limit: 1024 };
 
       filter.catch(error, mockArgumentsHost);
-      expect(mockStatus).toBeCalledWith(HttpStatus.PAYLOAD_TOO_LARGE);
-      expect(mockJson).toBeCalledWith({
+      expect(mockStatus).toHaveBeenCalledWith(HttpStatus.PAYLOAD_TOO_LARGE);
+      expect(mockJson).toHaveBeenCalledWith({
         message: `
         Your request entity size is too big for the server to process it:
           - request size: ${error.length};

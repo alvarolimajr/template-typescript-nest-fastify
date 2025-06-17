@@ -46,14 +46,14 @@ describe('AddressController', () => {
   });
 
   it('should be a NotFoundException if zip code is null', async () => {
-    await expect(controller.findByZipCode(null)).rejects.toThrowError(
+    await expect(controller.findByZipCode(null)).rejects.toThrow(
       NotFoundException,
     );
   });
 
   it('should be a NotFoundException', async () => {
     jest.spyOn(service, 'findByZipCode').mockResolvedValue(null);
-    await expect(controller.findByZipCode('00000000')).rejects.toThrowError(
+    await expect(controller.findByZipCode('00000000')).rejects.toThrow(
       NotFoundException,
     );
   });
@@ -62,7 +62,7 @@ describe('AddressController', () => {
     jest.spyOn(service, 'findByZipCode').mockImplementation(() => {
       throw new HttpException('400 Bad Request', 400);
     });
-    await expect(controller.findByZipCode('1234567890')).rejects.toThrowError(
+    await expect(controller.findByZipCode('1234567890')).rejects.toThrow(
       HttpException,
     );
   });

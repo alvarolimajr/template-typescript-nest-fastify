@@ -59,7 +59,7 @@ describe('fastifyRequestIdHookHandler', () => {
   it('should be called', () => {
     fastifyRequestIdHookHandler(mockRequestHeader, null, mockDone);
 
-    expect(requestContext.set).toBeCalledTimes(1);
-    expect(mockDone).toBeCalledTimes(1);
+    expect(requestContext.set).toHaveBeenCalledTimes(1);
+    expect(mockDone).toHaveBeenCalledTimes(1);
   });
 });

@@ -93,9 +93,7 @@ describe('UsersService', () => {
   });
 
   it('should be a NotFoundException', async () => {
-    await expect(service.update(0, null)).rejects.toThrowError(
-      NotFoundException,
-    );
+    await expect(service.update(0, null)).rejects.toThrow(NotFoundException);
   });
 
   it('should delete an user', async () => {
@@ -116,6 +114,6 @@ describe('UsersService', () => {
   });
 
   it('should be a NotFoundException', async () => {
-    await expect(service.delete(0)).rejects.toThrowError(NotFoundException);
+    await expect(service.delete(0)).rejects.toThrow(NotFoundException);
   });
 });

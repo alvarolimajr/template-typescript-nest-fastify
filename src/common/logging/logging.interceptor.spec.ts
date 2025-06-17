@@ -102,7 +102,7 @@ describe('LoggingInterceptor', () => {
       next: (response) => {
         expect(response).toEqual(payload);
 
-        expect(debugSpy).toBeCalledTimes(2);
+        expect(debugSpy).toHaveBeenCalledTimes(2);
         expect(debugSpy.mock.calls[0]).toEqual([
           {
             body: {},
@@ -134,7 +134,7 @@ describe('LoggingInterceptor', () => {
 
     interceptor.intercept(executionContext, mockBadRequestHandler).subscribe({
       error: () => {
-        expect(debugSpy).toBeCalledTimes(1);
+        expect(debugSpy).toHaveBeenCalledTimes(1);
         expect(debugSpy.mock.calls[0]).toEqual([
           {
             body: {},
@@ -144,7 +144,7 @@ describe('LoggingInterceptor', () => {
           },
           ctx,
         ]);
-        expect(warnSpy).toBeCalledTimes(1);
+        expect(warnSpy).toHaveBeenCalledTimes(1);
         expect(warnSpy.mock.calls[0]).toEqual([
           {
             message: outgoingMsg,
@@ -173,7 +173,7 @@ describe('LoggingInterceptor', () => {
       .intercept(executionContext, mockInternalErrorHandler)
       .subscribe({
         error: () => {
-          expect(debugSpy).toBeCalledTimes(1);
+          expect(debugSpy).toHaveBeenCalledTimes(1);
           expect(debugSpy.mock.calls[0]).toEqual([
             {
               body: {},
@@ -183,7 +183,7 @@ describe('LoggingInterceptor', () => {
             },
             ctx,
           ]);
-          expect(errorSpy).toBeCalledTimes(1);
+          expect(errorSpy).toHaveBeenCalledTimes(1);
           expect(errorSpy.mock.calls[0]).toEqual([
             {
               message: outgoingMsg,
@@ -211,7 +211,7 @@ describe('LoggingInterceptor', () => {
 
     interceptor.intercept(executionContext, mockErrorHandler).subscribe({
       error: () => {
-        expect(debugSpy).toBeCalledTimes(1);
+        expect(debugSpy).toHaveBeenCalledTimes(1);
         expect(debugSpy.mock.calls[0]).toEqual([
           {
             body: {},
@@ -221,7 +221,7 @@ describe('LoggingInterceptor', () => {
           },
           ctx,
         ]);
-        expect(errorSpy).toBeCalledTimes(1);
+        expect(errorSpy).toHaveBeenCalledTimes(1);
         expect(errorSpy.mock.calls[0]).toEqual([
           {
             message: outgoingMsg,

@@ -85,9 +85,7 @@ describe('UsersController', () => {
 
   it('should be a NotFoundException', async () => {
     jest.spyOn(service, 'findById').mockImplementation(async () => null);
-    await expect(controller.findById(1)).rejects.toThrowError(
-      NotFoundException,
-    );
+    await expect(controller.findById(1)).rejects.toThrow(NotFoundException);
   });
 
   it('should call create() with DTO argument', async () => {
@@ -118,28 +116,24 @@ describe('UsersController', () => {
 
     await controller.update(1, dto);
 
-    expect(spy).toBeCalledWith(1, dto);
+    expect(spy).toHaveBeenCalledWith(1, dto);
   });
 
   it('should be a NotFoundException [findById]', async () => {
-    await expect(controller.findById(0)).rejects.toThrowError(
-      NotFoundException,
-    );
+    await expect(controller.findById(0)).rejects.toThrow(NotFoundException);
   });
 
   it('should be a NotFoundException [update]', async () => {
-    await expect(controller.update(0, null)).rejects.toThrowError(
-      NotFoundException,
-    );
+    await expect(controller.update(0, null)).rejects.toThrow(NotFoundException);
   });
 
   it('should be deleted', async () => {
     const spyOn = jest.spyOn(service, 'delete').mockResolvedValue();
     await controller.delete(1);
-    expect(spyOn).toBeCalledTimes(1);
+    expect(spyOn).toHaveBeenCalledTimes(1);
   });
 
   it('should be a NotFoundException [delete]', async () => {
-    await expect(controller.delete(0)).rejects.toThrowError(NotFoundException);
+    await expect(controller.delete(0)).rejects.toThrow(NotFoundException);
   });
 });

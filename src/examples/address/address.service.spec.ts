@@ -70,8 +70,6 @@ describe('AddressService', () => {
     jest
       .spyOn(httpService, 'get')
       .mockImplementationOnce(() => throwError(() => error));
-    await expect(service.findByZipCode(null)).rejects.toThrowError(
-      HttpException,
-    );
+    await expect(service.findByZipCode(null)).rejects.toThrow(HttpException);
   });
 });
