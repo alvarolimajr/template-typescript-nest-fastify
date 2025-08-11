@@ -57,7 +57,7 @@
     "@types/cli-color": "^2.0.6",
     "@types/jest": "^30.0.0",
     "@types/newrelic": "^9.14.8",
-    "@types/node": "^24.0.3",
+    "@types/node": "^24.2.1",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.34.1",
     "@typescript-eslint/parser": "^8.34.1",
