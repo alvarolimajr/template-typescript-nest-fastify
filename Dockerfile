@@ -13,7 +13,7 @@
 # https://www.bretfisher.com/node-docker-good-defaults/
 # http://goldbergyoni.com/checklist-best-practice-of-node-js-in-production/
 
-FROM node:24 AS builder
+FROM node:25 AS builder
 
 ENV NODE_ENV=build
 
@@ -40,7 +40,7 @@ RUN npm prune --omit=dev
 
 # --- Release
 
-FROM node:24-alpine
+FROM node:25-alpine
 
 # env vars
 ENV NODE_ENV=production
